@@ -41,13 +41,23 @@
                     </div>
 
                     {{-- form --}}
-                    <form class="bg-white min-w-full">
-
+                    <form class="bg-white min-w-full" autocomplete="off" action="{{ route('login-user') }}"
+                        method="POST">
+                        @csrf
+                        @if (Session::has('success'))
+                            <div class="text-green-700 text-xl bg-green-100 block mb-4 px-4 py-3 rounded">
+                                {{ Session::get('success') }}</div>
+                        @endif
+                        @if (Session::has('fail'))
+                            <div class="text-red-700 text-xl bg-red-100 px-4 py-3 block mb-4 rounded">
+                                {{ Session::get('fail') }}</div>
+                        @endif
 
                         <!-- Email Input -->
                         <div class="mb-4 ">
 
                             <input type="email" id="email" name="email" placeholder="Your email"
+                                autocomplete="off"
                                 class="w-full px-4 py-3 border rounded focus:outline-none focus:border-gray-500 text-sm">
                         </div>
 
@@ -62,8 +72,9 @@
                         </div>
                         <!-- Login Button -->
                         <button type="submit"
-                            class="w-full my-5 bg-gray-900 text-white font-semibold py-3 rounded-3xl hover:bg-gray-600 ">Log
-                            In</button>
+                            class="w-full my-5 bg-gray-900 text-white font-semibold py-3 rounded-3xl hover:bg-gray-600 ">
+                            Log in
+                        </button>
 
                         <div class="text-sm">Don't have an account?
                             <a href="register" class="pl-1 text-sky-500 font-bold">Sign up</a>
