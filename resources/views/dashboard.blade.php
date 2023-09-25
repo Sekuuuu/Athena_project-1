@@ -45,13 +45,14 @@
 
 
     {{-- Images --}}
-    <div class=" flex flex-row">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+
         @foreach ($post as $item)
-            {{ $item }}
-            <img class="image-preview  rounded-md mx-auto max-h-[85vh]" src="{{ asset('storage/' . $item->image) }}"
-                alt="Image Preview">
+            <img class="h-auto max-w-full rounded-lg" src="{{ asset('storage/' . $item->image) }}" alt="">
         @endforeach
     </div>
+
+
 </body>
 
 </html>
