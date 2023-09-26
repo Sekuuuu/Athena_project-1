@@ -67,9 +67,14 @@
                             <input type="password" id="password" name="password" placeholder="Password"
                                 class="w-full px-4 py-3 border rounded focus:outline-none focus:border-gray-500  text-sm">
                         </div>
-                        <div class="flex justify-end text-right text-sm">
+
+                        {{-- halna baki code  --}}
+                        {{-- <div class="flex justify-end text-right text-sm">
                             <a href="#" class=" text-sky-500 font-bold">Forgot password?</a>
-                        </div>
+                        </div> --}}
+
+
+
                         <!-- Login Button -->
                         <button type="submit"
                             class="w-full my-5 bg-gray-900 text-white font-semibold py-3 rounded-3xl hover:bg-gray-600 ">

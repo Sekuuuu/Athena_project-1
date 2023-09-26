@@ -73,6 +73,8 @@ class authcontroller extends Controller
             $data = User::where('id', "=", Session::get('loginId'))->first();
             $date = Carbon::parse($data->created_at)->format('d F Y');
             $post = post::all();
+            $post = $post->shuffle();
+
         }
         return view('dashboard', ['data' => $data, 'post' => $post, 'date' => $date]);
     }

@@ -45,12 +45,29 @@
 
 
     {{-- Images --}}
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+    <div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <div class="flex flex-col">
 
-        @foreach ($post as $item)
-            <img class="h-auto max-w-full rounded-lg" src="{{ asset('storage/' . $item->image) }}" alt="">
-        @endforeach
+            @foreach ($post as $item)
+                @php
+                    $i = $loop->iteration;
+                @endphp
+            @endforeach
+
+
+            @foreach ($post as $item)
+                <img class=" h-max rounded-lg p-1" src="{{ asset('storage/' . $item->image) }}" alt="">
+
+                @if ($loop->iteration % ($i / 4) == 0)
+        </div>
+        <div class="flex flex-col">
+            @endif
+            @endforeach
+        </div>
     </div>
+
+
+
 
 
 </body>
