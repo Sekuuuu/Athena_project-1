@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\authcontroller;
 use App\Http\Controllers\postController;
+use App\Http\Controllers\profileController;
 use App\Models\Listing;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,4 @@ Route::get('/dashboard', [authcontroller::class, 'Userdashboard']);
 Route::get('/createPost', [postController::class, 'posts']);
 Route::post('/create-post', [postController::class, 'create_post'])->name('create-post');
 
-Route::get('/profile', function () {
-    return view('profile.profile');
-});
+Route::get('/profile', [profileController::class, 'profile']);
