@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan&family=Noto+Sans+JP:wght@300&display=swap"
         rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
     @vite('resources/css/app.css')
 </head>
 
@@ -90,7 +92,7 @@
             @foreach ($post as $item)
                 {{-- Image --}}
                 <button class="relative h-max group"
-                    onclick="openImageModal('{{ asset('storage/' . $item->image) }}', '{{ $item->title }}', '{{ $item->description }}')">
+                    onclick="openImageModal('{{ asset('storage/' . $item->image) }}', '{{ $item->title }}', '{{ htmlspecialchars($item->description, ENT_QUOTES) }}')">
                     <img class="h-max w-full rounded-lg p-1 cursor-pointer" src="{{ asset('storage/' . $item->image) }}"
                         alt="">
                     <div
@@ -113,31 +115,62 @@
     </div>
 
     <!-- Modal -->
-    <div id="imageModal" class="fixed inset-0  hidden">
-        <div class=" flex items-center justify-center w-full">
+    <div id="imageModal" class="fixed inset-0 hidden">
+        <div class="flex items-center justify-center w-full h-full">
             <div class="absolute inset-0 bg-black bg-opacity-90"></div>
-            <div class="max-w-3xl mx-auto overflow-hidden rounded-lg shadow-lg grid grid-cols-4">
-                <!-- Title and Description Column -->
-                <div class="p-4 bg-white col-span-1">
-                    <h2 id="modalTitle" class="text-lg font-semibold mb-2"></h2>
-                    <p id="modalDescription" class="text-gray-400"></p>
+
+            <div class="w-[80%] mx-auto overflow-hidden rounded-lg shadow-lg grid grid-cols-4 relative">
+                <!-- Title and Description and Comments Column -->
+                <div class="p-4 bg-white col-span-1 flex flex-col">
+                    <!-- Title (Top-Left) -->
+                    <h3 id="modalTitle" class="text-lg font-semibold mb-2 self-start"></h3>
+                    <!-- Description -->
+                    <p id="modalDescription" class="text-gray-400 mb-4"></p>
+                    <!-- Like Button (with Font Awesome Palette Icon) -->
+                    <button id="likeButton" onclick="toggleLike()"
+                        class="text-gray-400 hover:text-red-400 focus:outline-none self-start">
+                        <i class="fas fa-palette text-xl"></i> Like
+                    </button>
+
+                    <!-- Comments Section (Scrollable) -->
+                    <div class="mt-4 overflow-y-auto">
+                        <!-- Individual Comments Go Here -->
+
+                        <div class="mb-2">
+                            <strong>Username:</strong> This is a comment.
+                        </div>
+
+                    </div>
                 </div>
+
                 <!-- Image Column -->
-                <div class="relative pb-[75%] col-span-3">
+                <div class="relative pb-[75%] col-span-3 flex items-center justify-center">
                     <img id="modalImage" class="absolute inset-0 w-full h-full object-cover" src=""
                         alt="">
                 </div>
             </div>
+
+
+            <!-- Close Button -->
             <button onclick="closeImageModal()"
-                class="absolute top-2 right-2 text-white hover:text-gray-300 focus:outline-none">
+                class="absolute top-[2%] right-2 text-white hover:text-gray-300 focus:outline-none">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                    class="h-6 w-6">
+                    class="h-10 w-10">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
                     </path>
                 </svg>
             </button>
+            <!-- Delete Button -->
+            <!-- Delete Button with Font Awesome Trash Bin Icon -->
+            <button onclick="deleteImage()" class="absolute right-4 top-[10%] mt-1/6 focus:outline-none">
+                <i class="fas fa-trash text-red-600 hover:text-red-800 text-2xl"></i>
+            </button>
+
         </div>
     </div>
+
+
+
 
 
     <script>
@@ -157,6 +190,25 @@
             modal.classList.remove('hidden');
         }
 
+        function deleteImage() {
+            console.log("delete button called");
+        }
+
+        let isLiked = false;
+
+        function toggleLike() {
+            isLiked = !isLiked;
+            const likeButton = document.getElementById('likeButton');
+
+            if (isLiked) {
+                likeButton.classList.remove('text-gray-400');
+                likeButton.classList.add('text-red-400');
+            } else {
+                likeButton.classList.remove('text-red-400');
+                likeButton.classList.add('text-gray-400');
+            }
+        }
+
         function closeImageModal() {
             const modal = document.getElementById('imageModal');
             modal.classList.add('hidden');
@@ -164,5 +216,6 @@
     </script>
 
 </body>
+
 
 </html>
