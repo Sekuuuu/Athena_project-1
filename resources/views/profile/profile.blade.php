@@ -120,6 +120,12 @@
             <div class="absolute inset-0 bg-black bg-opacity-90"></div>
 
             <div class="w-[80%] mx-auto overflow-hidden rounded-lg shadow-lg grid grid-cols-4 relative">
+                <!-- Image Column -->
+                <div class="relative pb-[75%] col-span-3 flex items-center justify-center">
+                    <img id="modalImage" class="absolute inset-0 max-w-full h-full object-cover" src=""
+                        alt="">
+                </div>
+
                 <!-- Title and Description and Comments Column -->
                 <div class="p-4 bg-white col-span-1 flex flex-col">
                     <!-- Title (Top-Left) -->
@@ -143,11 +149,7 @@
                     </div>
                 </div>
 
-                <!-- Image Column -->
-                <div class="relative pb-[75%] col-span-3 flex items-center justify-center">
-                    <img id="modalImage" class="absolute inset-0 w-full h-full object-cover" src=""
-                        alt="">
-                </div>
+
             </div>
 
 
@@ -155,16 +157,34 @@
             <button onclick="closeImageModal()"
                 class="absolute top-[2%] right-2 text-white hover:text-gray-300 focus:outline-none">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                    class="h-10 w-10">
+                    class="h-8 w-8">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
                     </path>
                 </svg>
             </button>
-            <!-- Delete Button -->
-            <!-- Delete Button with Font Awesome Trash Bin Icon -->
-            <button onclick="deleteImage()" class="absolute right-4 top-[10%] mt-1/6 focus:outline-none">
-                <i class="fas fa-trash text-red-600 hover:text-red-800 text-2xl"></i>
-            </button>
+            <div class="absolute right-5 top-[10%] mt-1/6 focus:outline-none">
+                <!-- Triple Dot Button -->
+                <button class="focus:outline-none" onclick="toggleDropdown()">
+                    <i class="fas fa-ellipsis-v text-gray-400 hover:text-gray-600 text-lg"></i>
+                </button>
+
+                <!-- Dropdown Menu -->
+                <div id="dropdownMenu"
+                    class="absolute right-0 mt-2 w-32 bg-white border border-gray-300 rounded-lg shadow-lg hidden">
+                    <ul class="py-2">
+                        <!-- Edit Option -->
+                        <li>
+                            <a href="#" onclick="editImage()"
+                                class="block px-4 py-2 hover:bg-gray-100">Edit</a>
+                        </li>
+                        <!-- Delete Option -->
+                        <li>
+                            <a href="#" onclick="deleteImage()"
+                                class="block px-4 py-2 text-red-600 hover:text-red-800">Delete</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -184,8 +204,8 @@
             const modalDescription = document.getElementById('modalDescription');
 
             modalImage.src = imageSrc;
-            modalTitle.textContent = title;
-            modalDescription.textContent = description;
+            modalTitle.innerHTML = title;
+            modalDescription.innerHTML = description;
 
             modal.classList.remove('hidden');
         }
@@ -212,6 +232,12 @@
         function closeImageModal() {
             const modal = document.getElementById('imageModal');
             modal.classList.add('hidden');
+        }
+
+
+        function toggleDropdown() {
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            dropdownMenu.classList.toggle('hidden');
         }
     </script>
 

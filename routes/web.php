@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\authcontroller;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\postController;
 use App\Http\Controllers\profileController;
 use App\Models\Listing;
@@ -31,6 +32,9 @@ Route::get('/register', function () {
 Route::post('/register-user', [authcontroller::class, 'registerUser'])->name('register-user');
 Route::post('/login-user', [AuthController::class, 'loginUser'])->name('login-user');
 Route::get('/logout', [authController::class, 'logout']);
+
+Route::get('auth/google', [GoogleController::class, 'googlepage']);
+Route::get('auth/google/callback', [GoogleController::class, 'googlecallback']);
 
 
 Route::get('/dashboard', [authcontroller::class, 'Userdashboard']);

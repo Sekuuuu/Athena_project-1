@@ -28,11 +28,11 @@
                 <div class="flex flex-col justify-center items-center text-center">
                     <span class="text-8xl ">Hi there!</span>
                     <span class=" ">Welcome to Athena. Community Dashboard</span><br>
-                    <button type="button"
+                    <a href="{{ 'auth/google' }}"
                         class="min-w-full bg-white ring-1 outline outline-slate-200 hover:bg-gray-100 focus:bg-gray-200  rounded-lg px-5 py-2.5  flex flex-row justify-center items-center text-center">
                         <img src="/images/google-icon.png" alt="" class=" w-4 mr-1">
                         Log in with Google
-                    </button>
+                    </a>
                     <div class="flex flex-row min-w-full justify-center items-center text-center my-1">
                         <hr class="my-5 w-1/6 border border-gray-200 block">
                         <span class=" mx-3 text-sm">or</span>

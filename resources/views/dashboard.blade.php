@@ -18,7 +18,8 @@
     <div class="bg-gray-700 h-14 flex flex-row justify-between items-center px-4">
         {{-- Logo --}}
         <div class="flex items-center">
-            <a href="{{ url('/dashboard') }}" class="text-white text-lg font-semibold">Athena</a>
+            <a href="{{ url('/dashboard') }}" class="text-white text-lg font-semibold"><img
+                    src="{{ $data->profile_image }}" alt="Profile Image" class="h-10 w-10 rounded-full"></a>
         </div>
 
         {{-- Search Bar --}}
