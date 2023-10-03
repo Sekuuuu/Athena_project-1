@@ -70,6 +70,17 @@
     {{-- Main post form  --}}
     {{-- --------------- --}}
     {{-- --------------- --}}
+    @if (session('success'))
+        <div class="text-green-700 text-xl bg-green-100 block mb-4 px-4 py-3 rounded">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('fail'))
+        <div class="text-red-700 text-xl bg-red-100 px-4 py-3 block mb-4 rounded">
+            {{ session('fail') }}
+        </div>
+    @endif
     <div class="container mx-auto mt-10 p-6 bg-white rounded shadow-lg">
         <h1 class="text-2xl font-semibold mb-6">Welcome! {{ $data->name }} </h1>
         <form action="{{ route('create-post') }}" method="POST" enctype="multipart/form-data">

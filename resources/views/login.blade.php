@@ -77,7 +77,7 @@
 
                         <!-- Login Button -->
                         <button type="submit"
-                            class="w-full my-5 bg-gray-900 text-white font-semibold py-3 rounded-3xl hover:bg-gray-600 ">
+                            class="w-full my-5 bg-gray-900 text-white font-semibold py-3 rounded-lg hover:bg-gray-600 ">
                             Log in
                         </button>
 
