@@ -28,7 +28,7 @@ class postController extends Controller
             // Validation rules
             $rules = [
                 'title' => 'required|string|max:255',
-                'description' => 'required|string',
+                'description' => 'required',
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif',
                 // Add the image rule here
             ];
@@ -63,4 +63,23 @@ class postController extends Controller
             dd($e->getMessage());
         }
     }
+
+    public function searchPost(Request $request)
+    {
+        $query = $request->input('search');
+
+        // Get the logged-in user's data (assuming this is what you intended)
+        $data = User::where('id', '=', Session::get('loginId'))->first();
+        $post = post::all();
+        // Perform your search logic on the 'post' model
+        $results = Post::where('title', 'like', '%' . $query . '%')
+            ->orWhere('description', 'like', '%' . $query . '%')
+            // ->orWhere('name', 'like', '%' . $query . '%')
+            // Add more columns as needed
+            ->get();
+
+        // Fetch all posts 
+        return view('search_result', compact('results', 'data', 'post'));
+    }
+
 }

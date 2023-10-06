@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string('name');
             $table->unsignedBigInteger('created_by');
             $table->string('title')->nullable()->default("Art");
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->integer('like')->default(0);
             $table->string('image');
             $table->timestamps();

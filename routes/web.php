@@ -42,3 +42,5 @@ Route::get('/createPost', [postController::class, 'posts']);
 Route::post('/create-post', [postController::class, 'create_post'])->name('create-post');
 
 Route::get('/profile', [profileController::class, 'profile']);
+
+Route::get('/search', [postController::class, 'searchPost'])->name('search');

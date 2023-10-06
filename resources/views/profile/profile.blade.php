@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Athena</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan&family=Noto+Sans+JP:wght@300&display=swap"
@@ -17,10 +17,11 @@
 
 <body class="font-league-spartan">
     {{-- Navigation Bar --}}
-    <div class=" bg-slate-200 h-14 flex flex-row justify-between items-center px-4">
+    <div
+        class=" bg-slate-200 h-14 flex flex-row justify-between items-center px-4 shadow-xl shadow-slate-400 sticky top-0 z-10">
         {{-- Logo --}}
         <div class="flex items-center ml-4 mr-24">
-            <a href="{{ url('/dashboard') }}" class="text-black text-lg font-semibold">Athena</a>
+            <a href="{{ url('/dashboard') }}" class="text-black text-2xl font-semibold">Athena</a>
         </div>
 
         {{-- Search Bar --}}
@@ -77,7 +78,7 @@
     @endforeach
 
 
-    <div class=" max-w-full text-2xl my-4 text-center flex flex-col justify-center items-center">
+    <div class="mt-8 max-w-full text-2xl my-4 text-center flex flex-col justify-center items-center">
 
         <div class="w-24 h-24 rounded-full overflow-hidden mb-4">
             <img class="w-full h-full object-cover" src="{{ asset('storage/' . $item->image) }}">
@@ -128,7 +129,7 @@
 
     <!-- Modal -->
     <div id="imageModal"
-        class="fixed inset-0 w-screen h-screen hidden bg-black bg-opacity-90 flex items-center justify-center p-6">
+        class="fixed inset-0 w-screen h-screen hidden bg-black bg-opacity-90 flex items-center justify-center p-6 z-20">
         <button onclick="closeImageModal()"
             class="text-gray-300 hover:text-red-500 transition focus:outline-none absolute top-5 left-4">
             <i class="fas fa-arrow-left text-lg"></i> Back
@@ -173,6 +174,9 @@
                 </div>
 
                 <!-- Comment Section -->
+                @php
+                    // $comments->$post->comments;
+                @endphp
                 <div class="rounded-lg overflow-hidden shadow-lg p-6">
                     <div class="mb-4">
                         <h3 class="text-xl font-bold mb-2">Comments</h3>

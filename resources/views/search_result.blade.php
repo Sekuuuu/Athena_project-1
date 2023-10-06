@@ -46,7 +46,8 @@
         {{-- Profile Dropdown --}}
         <div class="relative group">
             <button
-                class="bg-gray-400 rounded-full flex items-center px-4 h-10 text-white hover:bg-gray-500 focus:outline-none transition duration-300 ease-in-out">
+                class="bg-gray-400 rounded-full flex items-center px-4 h-10
+                 text-white hover:bg-gray-500 focus:outline-none transition duration-300 ease-in-out">
                 <span class="mr-2">{{ $data->name }}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                     class="h-5 w-5 text-white transition-transform duration-300 ease-in-out transform group-hover:rotate-180">
@@ -97,14 +98,14 @@
     <div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         <div class="flex flex-col">
 
-            @foreach ($post as $item)
+            @foreach ($results as $item)
                 @php
                     $i = $loop->iteration;
                 @endphp
             @endforeach
 
 
-            @foreach ($post as $item)
+            @foreach ($results as $item)
                 {{-- Image --}}
                 <button class="relative h-max group"
                     onclick="openImageModal('{{ asset('storage/' . $item->image) }}', {{ json_encode($item->title) }}, {{ json_encode($item->description) }})">
@@ -139,7 +140,7 @@
         </button>
 
         {{-- main post --}}
-        <div class="min-w-[70%] min-h-[75%] max-w-[80%] max-h-[90%] bg-white flex flex-row relative rounded-md">
+        <div class="min-w-[70%] min-h-[75%] max-w-[80%] max-h-[80%] bg-white flex flex-row relative rounded-md">
 
             <div class="relative flex items-center justify-center w-[70%] group overflow-hidden">
                 <img id="modalbackground" class="absolute top-0 left-0 w-full h-full object-cover blur-md">
@@ -181,10 +182,10 @@
                 <!-- Comment Section -->
                 <div class="rounded-lg overflow-hidden shadow-lg p-6">
                     <div class="mb-4">
-                        <h3 class=" text-lg font-bold mb-2">Comments</h3>
+                        <h3 class="text-xl font-bold mb-2">User-07</h3>
                         <!-- Single Comment -->
                         <div class="flex items-center space-x-2">
-                            <p class="text-gray-700"><b>Michel: </b>Very nice art</p>
+                            <p class="text-gray-700">Very nice art</p>
                         </div>
                         <!-- Add more comments as needed -->
                     </div>

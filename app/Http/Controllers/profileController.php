@@ -21,6 +21,7 @@ class profileController extends Controller
 
             // Retrieve posts created by the logged-in user
             $posts = Post::where('created_by', '=', Session::get('loginId'))
+                ->with('user:id,name', 'comments.replies', 'comments.user:id,name', 'comments.replies.user:id,name')
                 ->orderBy('created_at', 'desc')
                 ->get();
 
